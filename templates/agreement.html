@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+    <html>
+      <head>
+        <!-- this line of code removes the favicon.ico error -->
+        <link rel="icon" href="data:,">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agreement</title>
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>
+
+          <script>
+        var data = JSON.stringify( {{ data | tojson | safe }} )
+      </script>
+
+         <script src="/static/js/agreement.js"></script>
+        <!-- CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> <!-- CSS for Progress Bar -->
+        <link rel="stylesheet" href="/static/styles/agreement.css">
+      </head>
+
+      <body>
+
+
+
+          <div class="container text-center mt-5">
+            <h1 class="page-title">
+                Consent form<br><br>
+
+            </h1>
+           <h4 class="instructions">
+            1. You are about to participate in the experiment as part of a decision-making study.<br>
+2. During the experiment, you will be presented with photos and/or texts following some questions that you will be asked to answer.<br>
+3. The study and experiment were approved by the University Ethics Committee.<br>
+4. Confidentiality of each participant's personal identity is guaranteed. There is no possible way to link the participants' personal information to the answers and data they provide during the experiment.<br>
+5. Participation in the experiment takes approximately 25 minutes.<br>
+6. Participants who complete the experiment will receive a payment according the assignment description. <br>
+7. You can quit at any point from participating in the experiment by clicking the exit button. However, a participant who withdrew (and did not complete the experiment) would not be eligible for any reward.<br>
+8. For any experiment related issue or questions, please contact experiment editors at email: sokhinas@post.bgu.ac.il <br>
+9. I hereby declare that I have understood all the above and that I have voluntarily given my consent.<br>
+
+             </h4>
+          </div>
+
+          <div class="row actions justify-content-around">
+            <div class="buttons-box col-md-7 col-12">
+              <div class="submit-container">
+                <button class="close-btn">I don't agree- Exit </button>
+                <button class="submit-btn" type="button" onclick="go_to_introduction()">I agree - Let's begin</button>
+              </div>
+            </div>
+          </div>
+
+      </body>
+    </html>

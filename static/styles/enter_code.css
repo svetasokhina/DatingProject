@@ -1,0 +1,72 @@
+.top-buffer { margin-top:20px; }
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,600);
+
+body {
+ background-color: lightgrey;
+}
+
+.page-progress-bar {
+  margin-bottom: 50px;
+}
+
+
+.content-data {
+  margin-top: 25px;
+}
+
+.submit-btn, .close-btn {
+  width: 242px;
+  height: 60px;
+  font-size: 16px;
+  color: #F5F5F5;
+  background-color: #4e89af;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.close-btn {
+  background-color: red;
+  width: 150px;
+  height: 60px;
+}
+
+.submit-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.buttons-box {
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions {
+  margin-bottom: 100px;
+}
+
+
+
+/* Mobile */
+@media (max-width:767px) {
+ .close-btn {
+   width: 70px;
+ }
+
+  .submit-btn {
+    width: 150px;
+  }
+}
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+    font-size: 20px;
+}

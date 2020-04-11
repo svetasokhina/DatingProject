@@ -1,0 +1,110 @@
+.top-buffer { margin-top:20px; }
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,600);
+
+body {
+ background-color: lightgrey;
+}
+
+.page-progress-bar {
+  margin-bottom: 50px;
+}
+
+
+.content-data {
+  margin-top: 25px;
+}
+
+.submit-btn, .close-btn {
+  width: 242px;
+  height: 60px;
+  font-size: 16px;
+  color: #F5F5F5;
+  background-color: #4e89af;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.close-btn {
+  background-color: red;
+  width: 150px;
+  height: 60px;
+}
+
+.submit-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.buttons-box {
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+  .title {
+    color: grey;
+  }
+
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .button:hover {
+    background-color: #555;
+  }
+
+/* Mobile */
+@media (max-width:767px) {
+ .close-btn {
+   width: 70px;
+ }
+
+  .submit-btn {
+    width: 150px;
+  }
+
+  .img-container img {
+    height: 250px;
+  }
+
+  #steps {
+    width: 230px;
+  }
+
+  .step:nth-child(n+2):before {
+    transform: translate(-50px, 21px);
+  }
+
+  .step:nth-child(n+2) {
+    margin: 0px 0px 0 50px;
+  }
+
+  .step:nth-child(n+2):before {
+    width: 37px;
+  }
+
+}
+
+.mini_instructions{
+  text-align: left;
+}
+
+.link{
+  text-align: left;
+}
+

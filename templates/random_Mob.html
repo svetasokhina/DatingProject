@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+    <html>
+      <head>
+        <!-- this line of code removes the favicon.ico error -->
+        <link rel="icon" href="data:,">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mob</title>
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                crossorigin="anonymous"></script>
+      <script>
+            var data = JSON.stringify( {{ data | tojson | safe }} )
+      </script>
+         <script src="/static/js/random_Mob.js"></script>
+        <!-- CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> <!-- CSS for Progress Bar -->
+        <link rel="stylesheet" href="/static/styles/random_Mob.css">
+      </head>
+
+      <body>
+
+
+
+          <div class="container text-center mt-5">
+
+           <h3 class="your device PC">This assignment has to be performed using a Mobile device.
+          </h3>
+<br>
+           <h5>Please, open the following link with your Mobile device.<br>
+             For your convenience you can scan the barcode below or go to the following link.
+
+            <br> <br>
+            <input id="text" type="text"
+            value="http://127.0.0.1:5000/open_enter_code" style="Width:30%"
+            onblur='generateBarCode();' />
+
+      <img id='barcode'
+            src="https://api.qrserver.com/v1/create-qr-code/?data=http://127.0.0.1:5000/open_enter_code&amp;size=100x100"
+            alt=""
+            title="HELLO"
+            width="70"
+            height="70" />
+
+
+            <br> <br>
+            Pay attention to copy the code below.
+            You will be requested to enter it when you go to the link.</h5>
+<br>
+
+            <form name="randform">
+
+              <input type="text" id="random_field" name="random_field" required
+                       minlength="7" maxlength="15" size="20" >
+              </form>
+
+          </div>
+
+
+          <div class="row actions justify-content-around">
+            <div class="buttons-box col-md-7 col-12">
+              <div class="submit-container">
+                <button class="close-btn">Exit</button>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="container text-center mt-5">
+
+       <h5 class= "mini_instructions"><br>
+
+
+</h5>
+
+
+
+
+
+</div>
+
+
+
+
+
+      </body>
+    </html>
+
