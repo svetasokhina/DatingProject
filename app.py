@@ -10,7 +10,7 @@ from sqlalchemy import func
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     debug = True
@@ -195,7 +195,7 @@ def db_insert_profile_score(user_id, profile_idx, profile_id, score, response_ti
     column_name = int(profile_idx)
 
     jsoned = json.dumps(cell_data)
-    sql_command = "UPDATE UsersTable SET profile{}==:s2 WHERE user_id==:s3;".format(column_name)
+    sql_command = "UPDATE UsersTable SET profile{}=:s2 WHERE user_id=:s3;".format(column_name)
     db.session.execute(sql_command, {'s2': jsoned, 's3': user_id})
     db.session.commit()
 
