@@ -26,7 +26,7 @@
                 function preventBack(){window.history.forward();}
                  setTimeout("preventBack()", 0);
                  window.onunload=function(){null};
-</script>
+           </script>
         <!-- CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> <!-- CSS for Progress Bar -->
@@ -55,7 +55,7 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn">Close</button>
+                <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
                 <button class="submit-btn" type="button" onclick="go_to_instructions()"> Next</button>
               </div>
             </div>

@@ -247,9 +247,13 @@ def end_of_experiment():
 
 @app.route('/open_enter_code')
 def open_enter_code():
-    # param = request.args.get('param')  # extract the parameters transfered via the url
-    # data = json.loads(param)
     return render_template('enter_code.html')
+
+
+@app.route('/close_experiment')
+def close_experiment():
+    return render_template('close_page.html')
+
 
 
 if __name__ == '__main__':
