@@ -11,7 +11,16 @@ import db_handler
 
 app = Flask(__name__)
 
-engine = app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dataBase.db'
+ENV = 'dev'
+
+if ENV == 'dev':
+    debug = True
+    engine = app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dataBase.db'
+else:
+    debug = False
+    engine = app.config['SQLALCHEMY_DATABASE_URI'] = ''
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
@@ -257,4 +266,4 @@ def close_experiment():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=debug)
