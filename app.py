@@ -1,17 +1,16 @@
 import json
 import random
 import string
-
-import pandas as pd
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import update
 from sqlalchemy import func
-import db_handler
+
+# import db_handler
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     debug = True
@@ -24,7 +23,281 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
-# print('tables were created')
+
+# ---------  database Tables -------------------------------------
+class UsersTable(db.Model):
+    __tablename__ = 'UsersTable'
+    user_id = db.Column("user_id", db.Integer, primary_key=True, autoincrement=True)
+    chosen_gender = db.Column('chosen_gender', db.Integer)
+    device = db.Column("device", db.Unicode)
+    text = db.Column("text", db.Integer)
+    user_EG_num = db.Column('user_EG_num', db.Integer)
+    trans_code = db.Column('trans_code', db.Unicode)
+    profile1 = db.Column("profile1", db.Unicode)
+    profile2 = db.Column("profile2", db.Unicode)
+    profile3 = db.Column("profile3", db.Unicode)
+    profile4 = db.Column("profile4", db.Unicode)
+    profile5 = db.Column("profile5", db.Unicode)
+    profile6 = db.Column("profile6", db.Unicode)
+    profile7 = db.Column("profile7", db.Unicode)
+    profile8 = db.Column("profile8", db.Unicode)
+    profile9 = db.Column("profile9", db.Unicode)
+    profile10 = db.Column("profile10", db.Unicode)
+    profile11 = db.Column("profile11", db.Unicode)
+    profile12 = db.Column("profile12", db.Unicode)
+
+    q1 = db.Column("q1", db.Unicode)
+    q2 = db.Column("q2", db.Unicode)
+    q3 = db.Column("q3", db.Unicode)
+    q4 = db.Column("q4", db.Unicode)
+    q5 = db.Column("q5", db.Unicode)
+    q6 = db.Column("q6", db.Unicode)
+    q7 = db.Column("q7", db.Unicode)
+    q8 = db.Column("q8", db.Unicode)
+    q9 = db.Column("q9", db.Unicode)
+    q10 = db.Column("q10", db.Unicode)
+    q11 = db.Column("q11", db.Unicode)
+    q12 = db.Column("q12", db.Unicode)
+
+    s1 = db.Column("s1", db.Unicode)
+    s2 = db.Column("s2", db.Unicode)
+    s3 = db.Column("s3", db.Unicode)
+    s4 = db.Column("s4", db.Unicode)
+    s5 = db.Column("s5", db.Unicode)
+    s6 = db.Column("s6", db.Unicode)
+    s7 = db.Column("s7", db.Unicode)
+    s8 = db.Column("s8", db.Unicode)
+
+    final_code = db.Column("final_code", db.Unicode)
+    done = db.Column('done', db.Integer)
+
+    def __init__(self):
+        self.device = None
+        self.text = None
+        self.chosen_gender = None
+        self.user_EG_num = None
+        self.trans_code = None
+        self.profile1 = None
+        self.profile2 = None
+        self.profile3 = None
+        self.profile4 = None
+        self.profile5 = None
+        self.profile6 = None
+        self.profile7 = None
+        self.profile8 = None
+        self.profile9 = None
+        self.profile10 = None
+        self.profile11 = None
+        self.profile12 = None
+
+        self.q1 = None
+        self.q2 = None
+        self.q3 = None
+        self.q4 = None
+        self.q5 = None
+        self.q6 = None
+        self.q7 = None
+        self.q8 = None
+        self.q9 = None
+        self.q10 = None
+        self.q11 = None
+        self.q12 = None
+
+        self.s1 = None
+        self.s2 = None
+        self.s3 = None
+        self.s4 = None
+        self.s5 = None
+        self.s6 = None
+        self.s7 = None
+        self.s8 = None
+
+        self.final_code = None
+        self.done = 0
+
+    def __init__(self, device, text, user_EG_num):
+        self.device = device
+        self.text = text
+        self.user_EG_num = user_EG_num
+
+        self.trans_code = None
+        self.profile1 = None
+        self.profile2 = None
+        self.profile3 = None
+        self.profile4 = None
+        self.profile5 = None
+        self.profile6 = None
+        self.profile7 = None
+        self.profile8 = None
+        self.profile9 = None
+        self.profile10 = None
+        self.profile11 = None
+        self.profile12 = None
+
+        self.q1 = None
+        self.q2 = None
+        self.q3 = None
+        self.q4 = None
+        self.q5 = None
+        self.q6 = None
+        self.q7 = None
+        self.q8 = None
+        self.q9 = None
+        self.q10 = None
+        self.q11 = None
+        self.q12 = None
+
+        self.s1 = None
+        self.s2 = None
+        self.s3 = None
+        self.s4 = None
+        self.s5 = None
+        self.s6 = None
+        self.s7 = None
+        self.s8 = None
+
+        self.final_code = None
+        self.done = 0
+
+
+db.create_all()
+print('tables were created')
+
+
+# ---------  database functions -------------------------------------
+def db_create_user_init_params(device, text, user_EG_num):
+    submit = UsersTable(device, text, user_EG_num)
+    db.session.add(submit)
+    db.session.commit()
+    print('new row was added with id:', submit.user_id)
+    return submit.user_id
+
+
+def db_start_experiment(user_id, user_gender_choice):
+    # TODO: choose which EG
+    # app.db.session.update(Tables.UsersTable).where(Tables.UsersTable.user_id == user_id). \
+    #     values(chosen_gender=user_gender_choice)
+
+    db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update(
+        {UsersTable.chosen_gender: user_gender_choice})
+    db.session.commit()
+
+    print('user {}: gender choice is: {} '.format(user_id, user_gender_choice))
+
+
+def db_insert_profile_score(user_id, profile_idx, profile_id, score, response_time):
+    cell_data = {
+        'profile_id:': profile_id,
+        'score': score,
+        'response_time': response_time
+    }
+
+    column_name = int(profile_idx)
+
+    jsoned = json.dumps(cell_data)
+    sql_command = "UPDATE UsersTable SET profile{}==:s2 WHERE user_id==:s3;".format(column_name)
+    db.session.execute(sql_command, {'s2': jsoned, 's3': user_id})
+    db.session.commit()
+
+
+def db_insert_questions_answers(data):
+    user_id = data['user_id']
+    user_row = UsersTable.query.filter_by(user_id=user_id).first()
+    user_row.q1 = data['q1']
+    user_row.q2 = data['q2']
+    user_row.q3 = data['q3']
+    user_row.q4 = data['q4']
+    user_row.q5 = data['q5']
+    user_row.q6 = data['q6']
+    user_row.q7 = data['q7']
+    user_row.q8 = data['q8']
+    user_row.q9 = data['q9']
+    user_row.q10 = data['q10']
+    user_row.q11 = data['q11']
+    user_row.q12 = data['q12']
+    user_row.s1 = data['s1']
+    user_row.s2 = data['s2']
+    user_row.s3 = data['s3']
+    user_row.s4 = data['s4']
+    user_row.s5 = data['s5']
+    user_row.s6 = data['s6']
+    user_row.s7 = data['s7']
+    user_row.s8 = data['s8']
+    user_row.done = 1
+
+    db.session.commit()
+
+    print('Questions for user: ', user_id, ' were insert to the DB')
+
+
+def db_get_count_EG():
+    answer = db.session.query(
+        UsersTable.user_EG_num,
+        func.count()).filter(UsersTable.done == 1).group_by(UsersTable.user_EG_num).all()
+
+    EG_status = {}
+    for pair in answer:
+        EG_status[pair[0]] = pair[1]
+
+    return EG_status
+
+
+def db_get_device(user_id):
+    result = db.session.query(UsersTable.device).filter_by(user_id=user_id).first()
+    if result is None:
+        print('ID {} doesnt exist'.format(user_id))
+        return ''
+    else:
+        desired_device = ''
+        for res in result:
+            desired_device = res
+        return desired_device
+
+
+def db_insert_trans_code(user_id, trans_code):
+    # res = app.db.session.query(Tables.UsersTable.trans_code).filter_by(user_id=user_id).first()
+    # if res is None:
+    answer = db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update(
+        {UsersTable.trans_code: trans_code})
+    db.session.commit()
+
+
+def db_insert_final_code(user_id, final_code):
+    db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update(
+        {UsersTable.final_code: final_code})
+    db.session.commit()
+
+
+def db_get_trans_code(user_id, trans_code):
+    result = db.session.query(UsersTable.trans_code).filter_by(user_id=user_id).first()
+
+    if result is None:
+        print('ID {} doesnt exist'.format(user_id))
+        return 'False'
+    else:
+        temp = ''
+        for res in result:
+            temp = res
+
+        if temp == trans_code:
+            print('trans Code {} exists'.format(trans_code))
+            return 'True'
+        else:
+            print('trans Code {} doesnt exist'.format(trans_code))
+            return 'False'
+
+
+# creating woman vector of profiles with text
+def profiles_woman_text():
+    profiles_woman_text = []
+    for num in range(12):
+        prob = random.uniform(0, 1)
+        if prob > 0.5:
+            profiles_woman_text.insert(num, profiles_woman_proper[num])
+        else:
+            profiles_woman_text.insert(num, profiles_woman_corrupt[num])
+
+    return profiles_woman_text
 
 
 profiles_man = [120, 130, 140, 110, 160, 182, 171, 150, 1112, 1121, 1101, 192]
@@ -55,22 +328,7 @@ profiles_woman_proper = [211, 221, 231, 241, 251, 261, 271, 281, 291, 2101, 2111
 profiles_woman_corrupt = [212, 222, 232, 242, 252, 262, 272, 282, 292, 2102, 2112, 2122]
 
 
-# creating woman vector of profiles with text
-def profiles_woman_text():
-    profiles_woman_text = []
-    for num in range(12):
-        prob = random.uniform(0, 1)
-        if prob > 0.5:
-            profiles_woman_text.insert(num, profiles_woman_proper[num])
-        else:
-            profiles_woman_text.insert(num, profiles_woman_corrupt[num])
-
-    return profiles_woman_text
-
-
-# print(profiles_woman_text())
-
-
+# ---------  app routes -------------------------------------
 @app.route('/')
 def index():
     # db_handler.add_row_to_balancingTable()
@@ -96,7 +354,7 @@ def uniqueString(id):
 def check_if_valid():
     data = request.get_json()
     EGroups = [1, 2, 3, 4]
-    EG_status = db_handler.get_count_EG()
+    EG_status = db_get_count_EG()
 
     for EG in EG_status.keys():
         if EG_status[EG] >= 30:
@@ -120,13 +378,13 @@ def check_if_valid():
         validity = 'True'
 
     # creating the table with user_id
-    user_id = db_handler.create_user_init_params(random_device, text, chosen_EG)
+    user_id = db_create_user_init_params(random_device, text, chosen_EG)
     if validity == 'False':
         trans_code = uniqueString(str(user_id))
     else:
         trans_code = '0'
 
-    db_handler.insert_trans_code(user_id, trans_code)
+    db_insert_trans_code(user_id, trans_code)
 
     print('user_device: {} - chosen_device: {} --> validity: {}'.format(data['user_device'], random_device, validity))
     return jsonify(valid=validity, user_id=user_id, device=data['user_device'], trans_code=trans_code)
@@ -137,10 +395,10 @@ def check_if_valid_after():
     data = request.get_json()
     trans_code = data['user_code']
     user_id = trans_code[6:]
-    desired_device = db_handler.get_device(user_id)
+    desired_device = db_get_device(user_id)
 
     if desired_device:
-        trans_code_match = db_handler.get_trans_code(user_id, trans_code)
+        trans_code_match = db_get_trans_code(user_id, trans_code)
         print('the desired device is:', desired_device)
         print('data user_device is:', data['user_device'])
         validity = 'False'
@@ -208,7 +466,7 @@ def start_experiment():
         random.shuffle(selected_profiles)
         print('the selected profiles is: {}'.format(selected_profiles))
 
-        db_handler.start_experiment(user_id, user_choice)
+        db_start_experiment(user_id, user_choice)
 
     return jsonify(mylist=selected_profiles, pointer=0, id=user_id)
 
@@ -222,7 +480,7 @@ def save_data():
     profile_id = data['profile']
     score = data['score']
     response_time = data['response_time']
-    db_handler.insert_profile_score(int(user_id), profile_idx, profile_id, score, response_time)
+    db_insert_profile_score(int(user_id), profile_idx, profile_id, score, response_time)
     return jsonify(data=data)
 
 
@@ -240,7 +498,7 @@ def profile(profile_id):
 @app.route("/save_questions", methods=['GET', 'POST'])
 def save_questions():
     data = request.get_json()
-    db_handler.insert_questions_answers(data)
+    db_insert_questions_answers(data)
     return jsonify(data=data['user_id'])
 
 
@@ -250,7 +508,7 @@ def end_of_experiment():
     json_params = json.loads(params)
     user_id = json_params['data']
     final_code = uniqueString(str(user_id))
-    db_handler.insert_final_code(user_id, final_code)
+    db_insert_final_code(user_id, final_code)
     return render_template('ending_page.html', myData=final_code)
 
 
