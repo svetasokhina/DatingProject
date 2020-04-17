@@ -10,7 +10,7 @@ from sqlalchemy import func
 
 app = Flask(__name__)
 
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     debug = True
