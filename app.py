@@ -11,15 +11,15 @@ import db_handler
 
 app = Flask(__name__)
 
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     debug = True
     engine = app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dataBase.db'
 else:
     debug = False
-    engine = app.config['SQLALCHEMY_DATABASE_URI'] = ''
-
+    engine = app.config[
+        'SQLALCHEMY_DATABASE_URI'] = 'postgres://gyvmazmozgmftg:b2fea44de215c35346dab1dccb5e01970d5011dc63c4b767c2123e701c36c491@ec2-34-197-212-240.compute-1.amazonaws.com:5432/dbuu6dgo6kqf69'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
@@ -262,7 +262,6 @@ def open_enter_code():
 @app.route('/close_experiment')
 def close_experiment():
     return render_template('close_page.html')
-
 
 
 if __name__ == '__main__':
