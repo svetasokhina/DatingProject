@@ -4,7 +4,7 @@ import string
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import update
-from sqlalchemy import func
+from sqlalchemy import func, text, bindparam
 
 # import db_handler
 
@@ -192,11 +192,35 @@ def db_insert_profile_score(user_id, profile_idx, profile_id, score, response_ti
         'response_time': response_time
     }
 
-    column_name = int(profile_idx)
-
+    column_num = int(profile_idx)
     jsoned = json.dumps(cell_data)
-    sql_command = "UPDATE UsersTable SET profile{}=:s2 WHERE user_id=:s3;".format(column_name)
-    db.session.execute(sql_command, {'s2': jsoned, 's3': user_id})
+
+    if column_num == 1:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile1: jsoned})
+    elif column_num == 2:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile2: jsoned})
+    elif column_num == 3:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile3: jsoned})
+    elif column_num == 4:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile4: jsoned})
+    elif column_num == 5:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile5: jsoned})
+    elif column_num == 6:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile6: jsoned})
+    elif column_num == 7:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile7: jsoned})
+    elif column_num == 8:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile8: jsoned})
+    elif column_num == 9:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile9: jsoned})
+    elif column_num == 10:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile10: jsoned})
+    elif column_num == 11:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile11: jsoned})
+    else:
+        db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile12: jsoned})
+
+
     db.session.commit()
 
 
