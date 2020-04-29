@@ -12,9 +12,12 @@ app = Flask(__name__)
 
 ENV = 'prod'
 
+
+
 if ENV == 'dev':
     debug = True
     engine = app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dataBase.db'
+    
 else:
     debug = False
     engine = app.config[
@@ -430,6 +433,7 @@ def check_if_valid():
         random_device = 'p'
 
     validity = 'False'
+    print(data)
     if data['u_d'] == random_device:
         validity = 'True'
 
