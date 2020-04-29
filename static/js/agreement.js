@@ -16,7 +16,6 @@ var parsed_data = JSON.parse(data)
 //     window.location.href='/open_intro?params='+user_device;
 
 //}
-
 function go_to_introduction(){
         var obj = new Object();
         obj.u_i = parsed_data.u_i

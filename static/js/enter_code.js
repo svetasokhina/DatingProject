@@ -1,5 +1,4 @@
 
-
 function check_if_device_valid_after(){
   user_device = "p"
   user_code = document.getElementById("code").value;

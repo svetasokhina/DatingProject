@@ -12,8 +12,6 @@ document.getElementById("random_field").value = res;
 
 
 
-
-
 function go_to_close_page(){
 
     window.location.href='/close_experiment'

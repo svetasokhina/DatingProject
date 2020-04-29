@@ -3,7 +3,6 @@
 
 
 
-
 $(document).ready( function() {
     $('.step').each(function(index, element) {
       // element == this

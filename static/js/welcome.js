@@ -22,7 +22,6 @@ function go_to_instructions () {
      check_validity('/check_if_valid', data_to_send)
 }
 
-
 //    res = start_experiment('/profiles', data_to_send)
 
 // sends json (data) to the server (app.py)

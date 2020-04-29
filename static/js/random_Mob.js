@@ -13,7 +13,6 @@ document.getElementById("random_field").value = res;
 
 
 
-
 function generateBarCode()
         {
             var nric = $('#text').val();

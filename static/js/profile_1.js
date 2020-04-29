@@ -69,7 +69,6 @@ function postData(url, data) {
   });
 });
 
-
 function go_to_close_page(){
 //    alert('Are you sure you want to close the experiment? If you close this page you will not recieve any payment!')
     var txt;

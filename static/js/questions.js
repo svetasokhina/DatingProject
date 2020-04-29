@@ -45,7 +45,6 @@ function submit_questions(){
             if(s1_obj.length && s2_obj.length && s3_obj.length && s4_obj.length && s5_obj.length
                 && s6_obj.length && s7_obj.length && s8_obj.length){
 
-
                 var obj = new Object();
                 obj.u_i = parsed_data.u_i
                 obj.q1 = q1

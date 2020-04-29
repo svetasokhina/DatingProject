@@ -6,8 +6,6 @@ console.log(parsed_data.u_i)
 console.log(parsed_data.u_d)
 
 function go_to_agreement(){
-
-
         var obj = new Object();
         obj.u_i = parsed_data["u_i"]
         obj.u_d = parsed_data["u_d"]

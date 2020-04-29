@@ -24,7 +24,6 @@ function go_to_profiles(){
     res = start_experiment('/profiles', data_to_send)
 }
 
-
 // sends json (data) to the server (app.py)
 function start_experiment(url, data) {
     // send post request to the server with the user's choice
