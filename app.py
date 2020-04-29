@@ -17,7 +17,7 @@ ENV = 'prod'
 if ENV == 'dev':
     debug = True
     engine = app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dataBase.db'
-    
+
 else:
     debug = False
     engine = app.config[
