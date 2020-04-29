@@ -1,7 +1,7 @@
 //extracting the parameter from html
 var parsed_data = JSON.parse(data)
-var user_id= parsed_data.user_id
-var device= parsed_data.device
+var user_id= parsed_data.u_i
+var device= parsed_data.u_d
 
 function go_to_profiles(){
     var radios = document.getElementsByName('genderS');
@@ -17,8 +17,8 @@ function go_to_profiles(){
     }
 
     var obj = new Object();
-    obj.user_id = user_id
-    obj.user_device = device
+    obj.u_i = user_id
+    obj.u_d = device
     obj.user_choice = choice
     var data_to_send= JSON.stringify(obj);
     res = start_experiment('/profiles', data_to_send)
@@ -47,4 +47,15 @@ function start_experiment(url, data) {
 }
 
 
+function go_to_close_page(){
+//    alert('Are you sure you want to close the experiment? If you close this page you will not recieve any payment!')
+    var txt;
+    var r = confirm("Are you sure you want to close the experiment? If you close this page you will not recieve any payment!");
+    if (r == true) {
+    txt = "You pressed OK!";
+    window.location.href='/close_experiment'
+    } else {
+    txt = "You pressed Cancel!";
+}
 
+ }

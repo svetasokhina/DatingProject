@@ -23,6 +23,11 @@
       </script>
      <script src="/static/js/profile_1.js"></script>
 
+    <script type="text/javascript" >
+                function preventBack(){window.history.forward();}
+                 setTimeout("preventBack()", 0);
+                 window.onunload=function(){null};
+    </script>
 
     <!-- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -68,9 +73,9 @@
                 <div class="content-data col-md-7 col-12">
                   <h3>Marie</h3>
                   <p class="title"></p>
-                  <p>Hi! If you need a recommendation for the best taco in town, I’m your girl. Looking for the margarita
-                    recommendation to match my own expertise. Text me where I can find the best margarita in town and maybe
-                    we'll meet there.</p>
+                  <p>Hi! If you need a recommendation for the best taco in town, I’m your girl. Looking for
+                    the margarita recommendation to match my own expertise. Text me where I can find the best
+                    margarita in town and maybe we'll meet there.</p>
                 </div>
               </div>
 
@@ -91,7 +96,7 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn">Close</button>
+                <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
               </div>
 
               <div class="submit-container">

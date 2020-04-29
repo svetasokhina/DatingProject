@@ -23,7 +23,7 @@ function next_page(){
 
 
     var obj = new Object();
-    obj.user_id = parsed_data.id;
+    obj.u_i = parsed_data.u_i;
     obj.profile_idx = parsed_data.pointer; //this is the index of the profile (DB column)
     obj.profile  = current_profile;
     obj.score = score;

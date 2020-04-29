@@ -220,12 +220,11 @@ def db_insert_profile_score(user_id, profile_idx, profile_id, score, response_ti
     else:
         db.session.query(UsersTable).filter(UsersTable.user_id == int(user_id)).update({UsersTable.profile12: jsoned})
 
-
     db.session.commit()
 
 
 def db_insert_questions_answers(data):
-    user_id = data['user_id']
+    user_id = data['u_i']
     user_row = UsersTable.query.filter_by(user_id=user_id).first()
     user_row.q1 = data['q1']
     user_row.q2 = data['q2']
@@ -278,6 +277,13 @@ def db_get_device(user_id):
         return desired_device
 
 
+def db_get_EG(user_id):
+    experiment_group = db.session.query(UsersTable.user_EG_num).filter_by(user_id=user_id).first()
+    for res in experiment_group:
+        EG = res
+    return EG
+
+
 def db_insert_trans_code(user_id, trans_code):
     # res = app.db.session.query(Tables.UsersTable.trans_code).filter_by(user_id=user_id).first()
     # if res is None:
@@ -311,19 +317,6 @@ def db_get_trans_code(user_id, trans_code):
             return 'False'
 
 
-# creating woman vector of profiles with text
-def profiles_woman_text():
-    profiles_woman_text = []
-    for num in range(12):
-        prob = random.uniform(0, 1)
-        if prob > 0.5:
-            profiles_woman_text.insert(num, profiles_woman_proper[num])
-        else:
-            profiles_woman_text.insert(num, profiles_woman_corrupt[num])
-
-    return profiles_woman_text
-
-
 profiles_man = [120, 130, 140, 110, 160, 182, 171, 150, 1112, 1121, 1101, 192]
 profiles_woman = [210, 220, 230, 240, 250, 260, 271, 282, 292, 2101, 2111, 2122]
 user_choice = 1
@@ -332,24 +325,63 @@ profiles_man_no_text = [110, 120, 130, 140, 150, 160, 170, 180, 190, 1100, 1110,
 profiles_woman_no_text = [210, 220, 230, 240, 250, 260, 270, 280, 290, 2100, 2110, 2120]
 
 
+# creating woman vector of profiles with text
+def profiles_woman_text():
+    profiles_woman_proper = [211, 221, 231, 241, 251, 261, 271, 281, 291, 2101, 2111, 2121]
+    profiles_woman_corrupt = [212, 222, 232, 242, 252, 262, 272, 282, 292, 2102, 2112, 2122]
+    profiles_woman_text = []
+    proper_counter = 0
+    corrupt_counter = 0
+    for num in range(12):
+        prob = random.uniform(0, 1)
+        if prob > 0.5:
+            if proper_counter < 6:
+                profiles_woman_text.insert(num, profiles_woman_proper[num])
+                proper_counter = proper_counter + 1
+
+            else:
+                profiles_woman_text.insert(num, profiles_woman_corrupt[num])
+                corrupt_counter = corrupt_counter + 1
+        else:
+            if corrupt_counter < 6:
+                profiles_woman_text.insert(num, profiles_woman_corrupt[num])
+                corrupt_counter = corrupt_counter + 1
+            else:
+                profiles_woman_text.insert(num, profiles_woman_proper[num])
+                proper_counter = proper_counter + 1
+
+    return profiles_woman_text
+
+
 # creating man vector of profiles with text
 def profiles_man_text():
     profiles_man_proper = [111, 121, 131, 141, 151, 161, 171, 181, 191, 1101, 1111, 1121]
     profiles_man_corrupt = [112, 122, 132, 142, 152, 162, 172, 182, 192, 1102, 1112, 1122]
     profiles_man_text = []
+    proper_counter = 0
+    corrupt_counter = 0
     for num in range(12):
         prob = random.uniform(0, 1)
         if prob > 0.5:
-            profiles_man_text.insert(num, profiles_man_proper[num])
+            if proper_counter < 6:
+                profiles_man_text.insert(num, profiles_man_proper[num])
+                proper_counter = proper_counter + 1
+
+            else:
+                profiles_man_text.insert(num, profiles_man_corrupt[num])
+                corrupt_counter = corrupt_counter + 1
         else:
-            profiles_man_text.insert(num, profiles_man_corrupt[num])
+            if corrupt_counter < 6:
+                profiles_man_text.insert(num, profiles_man_corrupt[num])
+                corrupt_counter = corrupt_counter + 1
+            else:
+                profiles_man_text.insert(num, profiles_man_proper[num])
+                proper_counter = proper_counter + 1
 
     return profiles_man_text
 
 
 # print(profiles_man_text())
-profiles_woman_proper = [211, 221, 231, 241, 251, 261, 271, 281, 291, 2101, 2111, 2121]
-profiles_woman_corrupt = [212, 222, 232, 242, 252, 262, 272, 282, 292, 2102, 2112, 2122]
 
 
 # ---------  app routes -------------------------------------
@@ -393,12 +425,12 @@ def check_if_valid():
     print('if text:', text)
 
     if chosen_EG == 3 or chosen_EG == 4:
-        random_device = 'Mobile'
+        random_device = 'm'
     else:
-        random_device = 'PC'
+        random_device = 'p'
 
     validity = 'False'
-    if data['user_device'] == random_device:
+    if data['u_d'] == random_device:
         validity = 'True'
 
     # creating the table with user_id
@@ -410,28 +442,29 @@ def check_if_valid():
 
     db_insert_trans_code(user_id, trans_code)
 
-    print('user_device: {} - chosen_device: {} --> validity: {}'.format(data['user_device'], random_device, validity))
-    return jsonify(valid=validity, user_id=user_id, device=data['user_device'], trans_code=trans_code)
+    print('user_device: {} - chosen_device: {} --> validity: {}'.format(data['u_d'], random_device, validity))
+    return jsonify(valid=validity, u_i=user_id, u_d=data['u_d'], trans_code=trans_code)
 
 
 @app.route("/check_if_valid_after", methods=['GET', 'POST'])
 def check_if_valid_after():
     data = request.get_json()
     trans_code = data['user_code']
-    user_id = trans_code[6:]
-    desired_device = db_get_device(user_id)
+    u_i = trans_code[6:]
+    desired_device = db_get_device(u_i)
 
     if desired_device:
-        trans_code_match = db_get_trans_code(user_id, trans_code)
+        trans_code_match = db_get_trans_code(u_i, trans_code)
         print('the desired device is:', desired_device)
-        print('data user_device is:', data['user_device'])
+        print('data user_device is:', data['u_d'])
         validity = 'False'
-        if data['user_device'] == desired_device:
+        if data['u_d'] == desired_device:
             validity = 'True'
             print('validity:', validity)
     else:
+        trans_code_match = 0
         validity = 'False'
-    return jsonify(valid=validity, user_id=user_id, device=desired_device, trans_code=trans_code_match)
+    return jsonify(valid=validity, u_i=u_i, u_d=desired_device, trans_code=trans_code_match)
 
 
 @app.route('/open_instructions')
@@ -474,32 +507,48 @@ def open_intro():
 @app.route("/profiles", methods=['GET', 'POST'])
 def start_experiment():
     data = request.get_json()
-    print('user_choice: {} \tuser_device: {}'.format(data['user_choice'], data['user_device']))
-    user_id = data['user_id']
+   # print('user_choice: {} \tu_d: {}'.format(data['user_choice'], data['u_d']))
+    user_id = data['u_i']
+    user_EG = db_get_EG(user_id)
+    print(type(user_EG))
+
     if data:
         user_choice = data['user_choice']
         selected_profiles = []
+
         if user_choice == '1':  # men
-            selected_profiles = profiles_man
+            if user_EG == 1 or user_EG == 3:
+                selected_profiles = profiles_man_text()
+            else:
+                selected_profiles = profiles_man_no_text
+
         if user_choice == '2':  # women
-            selected_profiles = profiles_woman
+            if user_EG == 1 or user_EG == 3:
+                selected_profiles = profiles_woman_text()
+            else:
+                selected_profiles = profiles_woman_no_text
+
         if user_choice == '3':  # both
-            combined_list = profiles_man + profiles_woman
-            selected_profiles = random.sample(combined_list, 12)
+            if user_EG == 1 or user_EG == 3:
+                combined_list = random.sample(profiles_man_text(), 6) + random.sample(profiles_woman_text(), 6)
+                selected_profiles = random.sample(combined_list, 12)
+            else:
+                combined_list = random.sample(profiles_man_no_text, 6) + random.sample(profiles_woman_no_text, 6)
+                selected_profiles = random.sample(combined_list, 12)
 
         random.shuffle(selected_profiles)
         print('the selected profiles is: {}'.format(selected_profiles))
 
         db_start_experiment(user_id, user_choice)
 
-    return jsonify(mylist=selected_profiles, pointer=0, id=user_id)
+    return jsonify(mylist=selected_profiles, pointer=0, u_i=user_id)
 
 
 # every profile page -> submit button will send a post request to this route
 @app.route("/save_data", methods=['GET', 'POST'])
 def save_data():
     data = request.get_json()
-    user_id = data['user_id']
+    user_id = data['u_i']
     profile_idx = data['profile_idx']
     profile_id = data['profile']
     score = data['score']
@@ -523,7 +572,7 @@ def profile(profile_id):
 def save_questions():
     data = request.get_json()
     db_insert_questions_answers(data)
-    return jsonify(data=data['user_id'])
+    return jsonify(data=data['u_i'])
 
 
 @app.route("/end_of_experiment", methods=['GET', 'POST'])

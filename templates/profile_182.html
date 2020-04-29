@@ -23,6 +23,11 @@
       </script>
      <script src="/static/js/profile_1.js"></script>
 
+     <script type="text/javascript" >
+                function preventBack(){window.history.forward();}
+                 setTimeout("preventBack()", 0);
+                 window.onunload=function(){null};
+    </script>
 
     <!-- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -68,10 +73,10 @@
                 <div class="content-data col-md-7 col-12">
                   <h3>Michael</h3>
                   <p class="title"></p>
-                  <p>Everybody here says they laid back. I’m not. Iam actually really hyper.
-                    The most laid back thing of me is my cat . and even him has to get up and run around the room from every time to time.
-                    If YOU like getting outside, going out, a someone that tries very hard to make you a laugh ,good time,
-                    and getting to know someone whose a little different I’d love to take you out.</p>
+                  <p>Everybody here says they laid back. I’m not. Iam actually really hiper.
+                    The laidest back thing of me is my cat . and even cat has to get up and run around the room from every
+                    sometime to time. If YOU like get outside, going out, a someone that tries very hard to make you a
+                    laugh ,good time, and getting to know someone whose a little different I’d love to take you out. </p>
                 </div>
               </div>
 
@@ -92,7 +97,7 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn">Close</button>
+                <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
               </div>
 
               <div class="submit-container">

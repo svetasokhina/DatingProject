@@ -23,6 +23,11 @@
       </script>
      <script src="/static/js/profile_1.js"></script>
 
+    <script type="text/javascript" >
+                function preventBack(){window.history.forward();}
+                 setTimeout("preventBack()", 0);
+                 window.onunload=function(){null};
+    </script>
 
     <!-- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -46,7 +51,7 @@
       <div class="row">
         <div class="page-title-description-container">
           <h7 class="page-title">
-           How attractive do you find the person in this profile?
+           How attractive do you find the person in this profile?0
           </h7>
           <h2 class="page-description">
           </h2>
@@ -68,9 +73,9 @@
                 <div class="content-data col-md-7 col-12">
                   <h3>Leslie</h3>
                   <p class="title"></p>
-                  <p>I am really into traveling!  I have traveled to every single state in the country at least three times.
-                    I have lived in 12 of them. I’m currently working on my list of favorites. Do you want to join me in my
-                    journeys?</p>
+                  <p>I am really into traveling!  I have traveled to every single state in the country at least
+                    three times. I have lived in 12 of them. I’m currently working on my list of favorites.
+                    Do you want to join me in my journeys?</p>
                 </div>
               </div>
 
@@ -91,7 +96,7 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn">Close</button>
+               <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
               </div>
 
               <div class="submit-container">

@@ -19,8 +19,8 @@ var parsed_data = JSON.parse(data)
 
 function go_to_introduction(){
         var obj = new Object();
-        obj.user_id = parsed_data.user_id
-        obj.device = parsed_data.device
+        obj.u_i = parsed_data.u_i
+        obj.u_d = parsed_data.u_d
         data_to_introduction= JSON.stringify(obj);
   window.location.href='/open_intro?param='+data_to_introduction;
 }

@@ -23,6 +23,11 @@
       </script>
      <script src="/static/js/profile_1.js"></script>
 
+    <script type="text/javascript" >
+                function preventBack(){window.history.forward();}
+                 setTimeout("preventBack()", 0);
+                 window.onunload=function(){null};
+    </script>
     <!-- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> <!-- CSS for Progress Bar -->
@@ -65,12 +70,11 @@
             <div class="data-container col-12">
               <div class="row justify-content-around">
                 <div class="content-data col-md-7 col-12">
-                  <h3>Erin</h3>
+                  <h3>Molly</h3>
                   <p class="title"></p>
-                  <p>Grew up in the Portland, Oregon area. Survived middle school by becoming a skater kid
-                    (still haven’t grown out of it). Now I’m trying to pay my rent, play my music, and make my way.
-                  Looking forward to going to Brazil in the fall. If you have any tips on what I should see, let me know.
-                  </p>
+                  <p>I was born in Eugene, I dream of living in LA, but I currently live right here in our
+                    little town. I like to travel but I find myself drawn most of all to the quiet,
+                    low traffic, peaceful area I currently call my home. I am ready for the adventures though…</p>
                 </div>
               </div>
 
@@ -91,7 +95,7 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn">Close</button>
+               <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
               </div>
 
               <div class="submit-container">

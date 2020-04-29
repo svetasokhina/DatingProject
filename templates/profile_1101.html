@@ -23,6 +23,11 @@
       </script>
      <script src="/static/js/profile_1.js"></script>
 
+     <script type="text/javascript" >
+                function preventBack(){window.history.forward();}
+                 setTimeout("preventBack()", 0);
+                 window.onunload=function(){null};
+    </script>
 
     <!-- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -66,13 +71,12 @@
             <div class="data-container col-12">
               <div class="row justify-content-around">
                 <div class="content-data col-md-7 col-12">
-                  <h3>Eddie</h3>
+                  <h3>Eli </h3>
                   <p class="title"></p>
-                  <p>I’m a creature of contradictions—An athletic bookworm, a night owl who’s an early riser,
-                    and an active guy who loves to be lazy on Sunday mornings. I’m always interested in learning new things
-                    whether it’s history, politics, or the guitar. (I started teaching myself piano
-                    last year and am loving the challenge so far.) I can also cook a mean baked tilapia
-                    or spaghetti dinner. Let me know if you’re interested or just give me some tips on my red sauce</p>
+                  <p>Prefer "Sunday Fundays" rather than  lazy Sundays, as active it gets the better.
+                    I'm into Snowboarding but Skiing is the best.  Music takes a big part of my life ,
+                    I love playing acoustic guitar and can also play electric.  Peanut Butter is amazing,
+                    love it more than Jelly, Though, they still go together pretty well. Maybe we will too ;)</p>
                 </div>
               </div>
 
@@ -93,7 +97,7 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn">Close</button>
+               <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
               </div>
 
               <div class="submit-container">

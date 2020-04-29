@@ -23,6 +23,11 @@
       </script>
      <script src="/static/js/profile_1.js"></script>
 
+    <script type="text/javascript" >
+                function preventBack(){window.history.forward();}
+                 setTimeout("preventBack()", 0);
+                 window.onunload=function(){null};
+    </script>
 
     <!-- CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -66,11 +71,11 @@
             <div class="data-container col-12">
               <div class="row justify-content-around">
                 <div class="content-data col-md-7 col-12">
-                  <h3>Liz</h3>
+                  <h3> Rachel </h3>
                   <p class="title"></p>
-                  <p>Favorites:  Halloween is my favorite holiday, Empire Strikes Back is my favorite Star Wars,
-                    and I once was driving across country along with:  my best friend, a basset hound,
-                    and the most cutest Lovrador ever.</p>
+                  <p> I saw the movie Wonder Woman in cinema ten times. I will never say no to Pasta! No matter
+                    what sauce. Going to movies is one of my favorite dates. Tell me about your movie obsession ,
+                    and maybe to the next movie we will go together :)</p>
                 </div>
               </div>
 
@@ -91,7 +96,7 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn">Close</button>
+               <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
               </div>
 
               <div class="submit-container">

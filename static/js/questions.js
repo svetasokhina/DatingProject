@@ -47,7 +47,7 @@ function submit_questions(){
 
 
                 var obj = new Object();
-                obj.user_id = parsed_data.id
+                obj.u_i = parsed_data.u_i
                 obj.q1 = q1
                 obj.q2 = q2
                 obj.q3 = q3
