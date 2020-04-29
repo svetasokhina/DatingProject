@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <!-- this line of code removes the favicon.ico error -->
+    <link rel="icon" href="data:,">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles</title>
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script>
+        var myData = JSON.stringify( {{ myData | tojson | safe }} )
+      </script>
+     <script src="/static/js/profile_1.js"></script>
+
+    <script type="text/javascript" >
+                function preventBack(){window.history.forward();}
+                 setTimeout("preventBack()", 0);
+                 window.onunload=function(){null};
+    </script>
+
+    <!-- CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> <!-- CSS for Progress Bar -->
+    <link rel="stylesheet" href="/static/styles/profiles.css">
+  </head>
+
+  <body>
+
+      <div class="row page-progress-bar justify-content-around">
+        <div class="progress-bar-placer col-md-7 col-12">
+          <div id="steps">
+            <div class="step" data-desc="Instructions">1</div>
+            <div class="step active" data-desc="Profiles">2</div>
+            <div class="step" data-desc="Questions">3</div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container main-container">
+      <div class="row">
+        <div class="page-title-description-container">
+          <h7 class="page-title">
+          How attractive do you find the person in this profile?
+          </h7>
+          <h2 class="page-description">
+          </h2>
+        </div>
+      </div>
+
+
+
+      <div class="row content">
+        <div class="card-profile col-12">
+          <div class="row data-profile justify-content-around">
+            <div class="img-container col-md-7 col-127">
+              <img src="/static/images/2_4.jpg">
+            </div>
+
+
+            <div class="data-container col-12">
+              <div class="row justify-content-around">
+                <div class="content-data col-md-7 col-12">
+                  <h3>Katy </h3>
+                  <p class="title"> </p>
+                  <p> A bit of me: I like to sing, guys with messy hair and bear, reading Fashion Magazines on
+                    Sunday mornings an to meeting up with friends.
+                      About you: If you are still here reading those words that is pretty good.  Let’s do this.
+
+                  </p>
+                </div>
+              </div>
+
+              <div class="row justify-content-around">
+                <div class="range-labels col-md-7 col-12">
+                  <div class="slidecontainer">
+                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                  </div>
+
+                  <label class="low_label">Not Really</label>
+                  <!--<label class="score" id="scroe_label"></label> -->
+                  <label class="high_label">Very Much</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row actions justify-content-around">
+            <div class="buttons-box col-md-7 col-12">
+              <div class="submit-container">
+                <button class="close-btn" type="button" onclick="go_to_close_page()">Close</button>
+              </div>
+
+              <div class="submit-container">
+                <button class="submit-btn" type="button" onclick="next_page()">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
