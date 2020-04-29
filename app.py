@@ -466,7 +466,7 @@ def check_if_valid_after():
             validity = 'True'
             print('validity:', validity)
     else:
-        trans_code_match = 0
+        trans_code_match = 'False'
         validity = 'False'
     return jsonify(valid=validity, u_i=u_i, u_d=desired_device, trans_code=trans_code_match)
 
