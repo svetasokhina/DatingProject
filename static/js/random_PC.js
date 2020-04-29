@@ -1,6 +1,6 @@
 var parsed_data = JSON.parse(data)
-var user_id= parsed_data.user_id
-var device= parsed_data.device
+var user_id= parsed_data.u_i
+var device= parsed_data.u_d
 var trans_code= parsed_data.trans
 
 

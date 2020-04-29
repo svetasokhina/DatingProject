@@ -106,5 +106,10 @@ body {
 
 .link{
   text-align: left;
+
 }
 
+.myLink{
+color: blue;
+font-size: 13px
+}
