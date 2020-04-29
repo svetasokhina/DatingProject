@@ -12,8 +12,6 @@ app = Flask(__name__)
 
 ENV = 'prod'
 
-
-
 if ENV == 'dev':
     debug = True
     engine = app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dataBase.db'
@@ -301,23 +299,23 @@ def db_insert_final_code(user_id, final_code):
     db.session.commit()
 
 
-def db_get_trans_code(user_id, trans_code):
-    result = db.session.query(UsersTable.trans_code).filter_by(user_id=user_id).first()
+def db_get_trans_code(user_input):
+    result = db.session.query(UsersTable.done).filter(UsersTable.trans_code == user_input).first()
+
+    print('Test resuls:', result)
 
     if result is None:
-        print('ID {} doesnt exist'.format(user_id))
-        return 'False'
+        print('The code that was inserted doesnt exist in the DB')
+        return False
     else:
-        temp = ''
         for res in result:
-            temp = res
-
-        if temp == trans_code:
-            print('trans Code {} exists'.format(trans_code))
-            return 'True'
+            isDone = res
+        if isDone == 0:
+            return True
         else:
-            print('trans Code {} doesnt exist'.format(trans_code))
-            return 'False'
+            print('The code that was inserted has already used by different user')
+            return False
+
 
 
 profiles_man = [120, 130, 140, 110, 160, 182, 171, 150, 1112, 1121, 1101, 192]
@@ -453,21 +451,27 @@ def check_if_valid():
 @app.route("/check_if_valid_after", methods=['GET', 'POST'])
 def check_if_valid_after():
     data = request.get_json()
-    trans_code = data['user_code']
-    u_i = trans_code[6:]
-    desired_device = db_get_device(u_i)
+    user_input = data['user_code']
+    trans_code_match = db_get_trans_code(user_input)
 
-    if desired_device:
-        trans_code_match = db_get_trans_code(u_i, trans_code)
-        print('the desired device is:', desired_device)
-        print('data user_device is:', data['u_d'])
-        validity = 'False'
-        if data['u_d'] == desired_device:
-            validity = 'True'
-            print('validity:', validity)
+    if trans_code_match:
+        u_i = user_input[6:]
+        desired_device = db_get_device(u_i)
+        if desired_device:
+            print('the desired device is:', desired_device)
+            print('data user_device is:', data['u_d'])
+            validity = 'False'
+            if data['u_d'] == desired_device:
+                validity = 'True'
+                print('validity:', validity)
+        else:
+            validity = 'False'
     else:
-        trans_code_match = 'False'
+        u_i = 0
+        desired_device = ''
+        print('Code doesnt exsit in DB or the code has already been used')
         validity = 'False'
+
     return jsonify(valid=validity, u_i=u_i, u_d=desired_device, trans_code=trans_code_match)
 
 
@@ -511,7 +515,7 @@ def open_intro():
 @app.route("/profiles", methods=['GET', 'POST'])
 def start_experiment():
     data = request.get_json()
-   # print('user_choice: {} \tu_d: {}'.format(data['user_choice'], data['u_d']))
+    # print('user_choice: {} \tu_d: {}'.format(data['user_choice'], data['u_d']))
     user_id = data['u_i']
     user_EG = db_get_EG(user_id)
     print(type(user_EG))

@@ -42,7 +42,7 @@ function check_validity_after(url, data) {
         obj.trans_data = data.trans_code
         data_to_instructions= JSON.stringify(obj);
 
-        if ((data.valid== "True")  && (data.trans_code == "True") ){
+        if ((data.valid== "True")  && (data.trans_code == true) ){
             window.location.href='/open_instructions?param='+ data_to_instructions;
         }
         else{
