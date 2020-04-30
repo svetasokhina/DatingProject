@@ -12,17 +12,27 @@ body {
   background-image: url("/static/images/bg-image4.jpeg");
 }
 
+.row{
+
+}
+
 .page-title-description-container {
   width: 100%;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 5px;
 }
 
 .page-title {
   font-size: 20px;
-  margin: 20px 0px;
+  margin: 5px 0px;
+
+
 }
 
+.progress-bar-placer{
+
+
+}
 
 .page-description {
   font-size: 16px;
@@ -30,7 +40,7 @@ body {
 }
 
 .page-progress-bar {
-  margin-bottom: 50px;
+
 }
 
 .img-container {
@@ -85,7 +95,7 @@ body {
 
 #steps {
   width: 345px;
-  margin: 50px auto;
+  margin: 10px auto;
 }
 
 
