@@ -5,6 +5,8 @@
 // sends  to the server (app.py)
 function go_to_instructions () {
 
+    document.getElementById("loader").style.visibility = 'visible';
+
     user_device = "p"
 
     var check = false;

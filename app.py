@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import update
 from sqlalchemy import func, text, bindparam
+import time
 
 # import db_handler
 
@@ -441,12 +442,12 @@ def check_if_valid():
 
     # creating the table with user_id
     user_id = db_create_user_init_params(random_device, text, chosen_EG)
+    trans_code = '0'
     if validity == 'False':
         trans_code = uniqueString(str(user_id))
-    else:
-        trans_code = '0'
+        db_insert_trans_code(user_id, trans_code)
+        time.sleep(5)
 
-    db_insert_trans_code(user_id, trans_code)
 
     print('user_device: {} - chosen_device: {} --> validity: {}'.format(data['u_d'], random_device, validity))
     return jsonify(valid=validity, u_i=user_id, u_d=data['u_d'], trans_code=trans_code)

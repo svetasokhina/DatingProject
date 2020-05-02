@@ -47,6 +47,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+    overflow-x: hidden;
 }
 
 .img-container img {
@@ -56,6 +57,8 @@ body {
 
 .content-data {
   margin-top: 25px;
+   overflow-x: hidden;
+
 }
 
 
@@ -272,6 +275,7 @@ body {
 /*#####################################range##########################################*/
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+
 }
 
 /* The slider itself */
@@ -348,4 +352,9 @@ body {
   .step:nth-child(n+2):before {
     width: 37px;
   }
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
