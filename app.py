@@ -446,9 +446,8 @@ def check_if_valid():
     if validity == 'False':
         trans_code = uniqueString(str(user_id))
         db_insert_trans_code(user_id, trans_code)
-        time.sleep(5)
 
-
+    time.sleep(5)
     print('user_device: {} - chosen_device: {} --> validity: {}'.format(data['u_d'], random_device, validity))
     return jsonify(valid=validity, u_i=user_id, u_d=data['u_d'], trans_code=trans_code)
 
