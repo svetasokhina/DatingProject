@@ -63,7 +63,7 @@ class UsersTable(db.Model):
     q9 = db.Column("q9", db.Unicode)
     q10 = db.Column("q10", db.Unicode)
     q11 = db.Column("q11", db.Unicode)
-    q12 = db.Column("q12", db.Unicode)
+
 
     s1 = db.Column("s1", db.Unicode)
     s2 = db.Column("s2", db.Unicode)
@@ -73,6 +73,7 @@ class UsersTable(db.Model):
     s6 = db.Column("s6", db.Unicode)
     s7 = db.Column("s7", db.Unicode)
     s8 = db.Column("s8", db.Unicode)
+    s9 = db.Column("s9", db.Unicode)
 
     final_code = db.Column("final_code", db.Unicode)
     done = db.Column('done', db.Integer)
@@ -107,7 +108,7 @@ class UsersTable(db.Model):
         self.q9 = None
         self.q10 = None
         self.q11 = None
-        self.q12 = None
+
 
         self.s1 = None
         self.s2 = None
@@ -117,6 +118,7 @@ class UsersTable(db.Model):
         self.s6 = None
         self.s7 = None
         self.s8 = None
+        self.s9 = None
 
         self.final_code = None
         self.done = 0
@@ -151,7 +153,7 @@ class UsersTable(db.Model):
         self.q9 = None
         self.q10 = None
         self.q11 = None
-        self.q12 = None
+
 
         self.s1 = None
         self.s2 = None
@@ -161,6 +163,7 @@ class UsersTable(db.Model):
         self.s6 = None
         self.s7 = None
         self.s8 = None
+        self.s9 = None
 
         self.final_code = None
         self.done = 0
@@ -243,7 +246,6 @@ def db_insert_questions_answers(data):
     user_row.q9 = data['q9']
     user_row.q10 = data['q10']
     user_row.q11 = data['q11']
-    user_row.q12 = data['q12']
     user_row.s1 = data['s1']
     user_row.s2 = data['s2']
     user_row.s3 = data['s3']
@@ -252,6 +254,7 @@ def db_insert_questions_answers(data):
     user_row.s6 = data['s6']
     user_row.s7 = data['s7']
     user_row.s8 = data['s8']
+    user_row.s9 = data['s9']
     user_row.done = 1
 
     db.session.commit()

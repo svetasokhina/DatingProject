@@ -26,11 +26,11 @@ function submit_questions(){
     q9 = document.getElementById("question9").value;
     q10 = document.getElementById("question10").value;
     q11 = document.getElementById("question11").value;
-    q12 = document.getElementById("question12").value;
+
 
     // vlidate that there is no question (Q) empty
     if (q1 !="" && q1 !="" && q2 !="" && q3 !="" && q4 !="" && q5 !="" && q6 !="" && q7 !="" && q8 !=""
-            && q9 !="" && q10 !="" && q11 !="" && q12 !="" ){
+            && q9 !="" && q10 !="" && q11 !=""  ){
 
             s1_obj = $('input[name="likert1"]:checked');
             s2_obj = $('input[name="likert2"]:checked');
@@ -40,10 +40,11 @@ function submit_questions(){
             s6_obj = $('input[name="likert6"]:checked');
             s7_obj = $('input[name="likert7"]:checked');
             s8_obj = $('input[name="likert8"]:checked');
+            s9_obj = $('input[name="likert9"]:checked');
 
             // validate that thee is no scale question empty
             if(s1_obj.length && s2_obj.length && s3_obj.length && s4_obj.length && s5_obj.length
-                && s6_obj.length && s7_obj.length && s8_obj.length){
+                && s6_obj.length && s7_obj.length && s8_obj.length && s9_obj.length){
 
                 var obj = new Object();
                 obj.u_i = parsed_data.u_i
@@ -58,7 +59,7 @@ function submit_questions(){
                 obj.q9 = q9
                 obj.q10 = q10
                 obj.q11 = q11
-                obj.q12 = q12
+
 
                 obj.s1 = s1_obj.val()
                 obj.s2 = s2_obj.val()
@@ -68,6 +69,7 @@ function submit_questions(){
                 obj.s6 = s6_obj.val()
                 obj.s7 = s7_obj.val()
                 obj.s8 = s8_obj.val()
+                obj.s9 = s9_obj.val()
 
 
                 //convert object to json string
