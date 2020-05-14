@@ -36,3 +36,29 @@ function go_to_close_page(){
 }
 
  }
+
+
+ function submit_func(){
+ var radios = document.getElementsByName('agreement');
+    var choice = 0
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        // do whatever you want with the checked radio
+//        alert(radios[i].value);
+        choice = radios[i].value
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+
+    if (choice==0){
+        alert('Please check one of the agreement boxes')
+    }
+    else{
+        if (choice==1){
+            go_to_introduction()
+        }else{
+            go_to_close_page()
+        }
+    }
+ }

@@ -86,3 +86,15 @@ body {
 .submit-container{
     margin-top: 0px;
 }
+
+.check_box_cont{
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+       width: 70%;
+       hight: 30%;
+       background: none no-repeat scroll 0 0 #fff;
+       border: 2px solid black;
+
+}

@@ -42,19 +42,37 @@
 
           <div class="container text-center mt-5">
             <h1 class="page-title">
-                Consent form<br><br>
+                Informed consent to participate in an experiment<br><br>
 
             </h1>
            <h4 class="instructions">
-            1. You are about to participate in the experiment as part of a decision-making study.<br><br>
-2. During the experiment, you will be presented with profiles following some questions that you will be asked to answer.<br><br>
-3. The study and experiment were approved by the Ben Gurion University Ethics Committee.<br><br>
-4. Confidentiality of each participant's personal identity is guaranteed. There is no possible way to link the participants' personal information to the answers and data they provide during the experiment.<br><br>
-5. Participation in the experiment takes approximately 15 minutes.<br><br>
-6. Participants who complete the experiment will receive a payment according to assignment description in Amazon Mechanical Turk. <br><br>
-7. You can quit at any point from participating in the experiment by clicking the red exit button. However, a participant who withdrew (and did not complete the assignment) would not be eligible for any reward.<br><br>
-8. For any experiment related issue or questions, please contact experiment editors at email: sokhinas@post.bgu.ac.il <br><br>
-9. By clicking the "agree button" - I declare that I have understood all the above and that I have voluntarily given my consent.<br><br>
+            1. You are about to participate in a digital experiment as part of a decision-making study.<br><br>
+2. During the experiment, you will be presented with several web-pages and you will be asked to answer several questions, some of which are mandatory and others are not.<br><br>
+3. You can withdraw your participation at any time or refuse to answer any question; however, participants who will not complete the required tasks and reach the completion page will not receive credit for their participation.<br><br>
+4. Upon completion of the experiment, you will reach a completion page in which you will receive a verification code. This code will verify that you completed the experiment in Amazon Mechanical Turk so that you will receive credit for this task. <br><br>
+5. Confidentiality as to the identity of each participant is guaranteed. It is impossible to connect between the personal details of the participant and the answers and data provided during the experiment.<br><br>
+6. There is no time limit for completing the experiment, which should take about 20 minutes. <br><br>
+7. The experiment has been approved by Ben-Gurion University’s ethics committee.<br><br>
+8. You can raise any question about the experiment by sending an email to  sokhinas@post.bgu.ac.il <br><br>
+9. Please check one of the following boxes:<br><br>
+
+            <div class="check_box_cont">
+            <span class="border border-0">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="agreement" value="1" > I hereby confirm that I have understood the above and freely give my consent to participate in this experiment.
+                </label>
+
+            </div>
+                <br>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="agreement" value="2" > I do not confirm.
+                </label>
+            </div>
+              </span>
+</div>
+
 <br><br>
              </h4>
           </div>
@@ -62,8 +80,8 @@
           <div class="row actions justify-content-around">
             <div class="buttons-box col-md-7 col-12">
               <div class="submit-container">
-                <button class="close-btn" type="button" onclick="go_to_close_page()">I don't agree </button>
-                <button class="submit-btn" type="button" onclick="go_to_introduction()">I agree </button>
+
+                <button class="submit-btn" type="button" onclick="submit_func()">Submit </button>
               </div>
             </div>
           </div>
