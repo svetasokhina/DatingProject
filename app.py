@@ -11,7 +11,7 @@ import time
 
 app = Flask(__name__)
 
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     debug = True
