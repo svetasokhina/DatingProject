@@ -27,7 +27,7 @@ function go_to_introduction(){
 function go_to_close_page(){
 //    alert('Are you sure you want to close the experiment? If you close this page you will not recieve any payment!')
     var txt;
-    var r = confirm("Are you sure you want to close the experiment? If you close this page you will not recieve any payment!");
+    var r = confirm("Are you sure you want to close the experiment? By clicking submit you will exit this task");
     if (r == true) {
     txt = "You pressed OK!";
     window.location.href='/close_experiment'
