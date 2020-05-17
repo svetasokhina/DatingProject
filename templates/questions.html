@@ -55,26 +55,18 @@
             <label for="question1">What device did you use to perform the assignment?</label>
             <select class="form-control" id="question1" >
                 <option value="" disabled selected>Select your option</option>
-                <option>Private Computer</option>
-                <option>Tablet</option>
-                <option>Mobile</option>
+                <option>Personal Computer (PC) </option>
+                <option>Smartphone</option>
             </select>
             </div>
 
 
             <div class="form-group">
-             <label for="question2">What is your age group?</label>
-             <select class="form-control" id="question2">
-             <option value="" disabled selected>Select your option</option>
-               <option>Under 20 years old</option>
-            <option>20-30 years old</option>
-            <option>30-40 years old</option>
-             <option>40-50 years old</option>
-               <option>50-60 years old</option>
-               <option>60-70 years old</option>
-               <option>Above 70 years old</option>
-             </select>
+             <label for="question2">How old are you? </label><br>
+              <input type="number" id="question2" value="25" min="18" max="100" >
              </div>
+
+
 
               <div class="form-group">
                 <label for="question3">What is your gender?</label>
@@ -147,7 +139,7 @@
       </div>
 
       <div class="form-group">
-        <label for="question8">How many hours in day you spend with your mobile phone (For non-work-related use)?</label>
+        <label for="question8">How many hours per day do you use your smartphone (For non-work-related use)?</label>
         <select class="form-control" id="question8">
         <option value="" disabled selected>Select your option</option>
         <option>Less than 1 hour</option>
@@ -435,11 +427,11 @@
 </form>
 
 <form class="likert_q" action="">
-        <label class="statement">Rate the degree of light around you  </label>
+        <label class="statement">Rate the degree of darkness around you  </label>
         <ul class='likert'>
           <li>
             <input type="radio" name="likert8" value="1">
-            <label>1 <br>Very Dark</label>
+            <label>1 <br>Not Dark At All</label>
           </li>
           <li>
             <input type="radio" name="likert8" value="2">
@@ -462,7 +454,7 @@
           </li>
           <li>
             <input type="radio" name="likert8" value="7">
-            <label>7<br>Not Dark At All </label>
+            <label>7<br>Very Dark</label>
           </li>
         </ul>
 </form>
