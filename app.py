@@ -23,7 +23,7 @@ else:
     #     'SQLALCHEMY_DATABASE_URI'] = 'postgres://gyvmazmozgmftg:b2fea44de215c35346dab1dccb5e01970d5011dc63c4b767c2123e701c36c491@ec2-34-197-212-240.compute-1.amazonaws.com:5432/dbuu6dgo6kqf69'
 
     engine = app.config[
-        'SQLALCHEMY_DATABASE_URI'] = 'postgres://aeciuzeobojcbt:7520e911cb76e7e708dbc4dd9d68391584e3877728559048d2777b0667e5fdb5@ec2-34-232-147-86.compute-1.amazonaws.com:5432/db8l847qa8fg7u'
+        'SQLALCHEMY_DATABASE_URI'] = 'postgres://kddjaxjdvmqjhz:b1d3efd202b36782c1538c3a344b34ffae7c86ce5e13e595e7070851f89158ca@ec2-52-200-48-116.compute-1.amazonaws.com:5432/d7djbbsn506i49'
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
