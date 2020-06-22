@@ -423,7 +423,7 @@ def check_if_valid():
     EG_status = db_get_count_EG()
 
     for EG in EG_status.keys():
-        if EG_status[EG] >= 10:
+        if EG_status[EG] >= 15:
             EGroups.remove(EG)
 
     chosen_EG = random.choice(EGroups)
